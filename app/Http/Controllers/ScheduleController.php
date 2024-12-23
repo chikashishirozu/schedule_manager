@@ -14,8 +14,8 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        // 全てのスケジュールを取得して、ビューに渡す
-        $schedules = Schedule::all();
+        // スケジュールを昇順で取得
+        $schedules = Schedule::orderBy('start_time', 'asc')->get();
         return view('schedules.index', compact('schedules'));
     }
 
