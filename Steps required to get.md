@@ -1,7 +1,7 @@
 # Steps required to get your application up and running
 $ sudo apt install composer php php-sqlite3 sqlite3
 
-setting php.ini timezone extension langage
+setting php.ini timezone extension language
 
 # 1. Check your database settings
 Edit the Laravel .env file to set the connection information for the database you want to use.
