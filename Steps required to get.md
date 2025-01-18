@@ -1,6 +1,8 @@
 # Steps required to get your application up and running
 $ sudo apt install composer php php-sqlite3 sqlite3
 
+$ composer install
+
 setting php.ini timezone extension language
 
 # 1. Check your database settings
@@ -116,9 +118,35 @@ $ php artisan db:seed --class=UsersTableSeeder
 
 $ rm composer.lock
 
-$ composer install
+$ sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+[sudo] hiroppy123 のパスワード:
+All settings correct for using Composer
+Downloading...
 
-$ composer update
+Composer (version 2.8.4) successfully installed to: /usr/local/bin/composer
+Use it: php /usr/local/bin/composer
+                                           
+hiroppy123@fedora:~/schedule_manager$ php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+All settings correct for using Composer
+The installation directory "/usr/local/bin" is not writable
+
+hiroppy123@fedora:~/schedule_manager$ sudo chown $(whoami):$(whoami) /usr/local/bin/composer
+[sudo] hiroppy123 のパスワード:
+
+hiroppy123@fedora:~/schedule_manager$ sudo chmod +x /usr/local/bin/composer
+
+hiroppy123@fedora:~/schedule_manager$ echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bashrc
+
+hiroppy123@fedora:~/schedule_manager$ source ~/.bashrc
+
+hiroppy123@fedora:~/schedule_manager$ echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bash_profile
+
+hiroppy123@fedora:~/schedule_manager$ source ~/.bash_profile
+
+hiroppy123@fedora:~/schedule_manager$ composer self-update
+You are already using the latest available Composer version 2.8.4 (stable channel).
+
+hiroppy123@fedora:~/schedule_manager$ composer update
 
 $ php artisan optimize:clear
 
