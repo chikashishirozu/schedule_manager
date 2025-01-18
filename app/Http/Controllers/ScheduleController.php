@@ -8,17 +8,25 @@ use Illuminate\Support\Facades\Validator;
 
 class ScheduleController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      * 一覧表示
      */
     public function index()
     {
-        // スケジュールを昇順で取得
+           // スタート時間が早い順にスケジュールを取得
         $schedules = Schedule::orderBy('start_time', 'asc')->get();
         return view('schedules.index', compact('schedules'));
     }
-
+    /**
+     * Display a listing of the resource.
+     * 詳細一覧表示
+     */    
+     public function details()
+    {
+        $schedules = Schedule::orderBy('start_time', 'asc')->get();
+        return view('schedules.details', compact('schedules'));
+    }    
     /**
      * Show the form for creating a new resource.
      * 新規作成フォームの表示
@@ -58,7 +66,7 @@ class ScheduleController extends Controller
         $schedule->save();
 
         // スケジュール一覧ページへリダイレクト
-        return redirect()->route('schedules.index')->with('status', 'スケジュールが追加されました。');
+        return redirect()->route('schedules')->with('status', 'スケジュールが追加されました。');
     }
 
     /**
@@ -112,7 +120,7 @@ class ScheduleController extends Controller
         $schedule->end_time = $request->end_time;
         $schedule->save();
 
-        return redirect()->route('schedules.index')->with('success', 'スケジュールが更新されました。');
+        return redirect()->route('schedules')->with('success', 'スケジュールが更新されました。');
     }
 
     /**
@@ -125,7 +133,7 @@ class ScheduleController extends Controller
         $schedule = Schedule::findOrFail($id);
         $schedule->delete();
 
-        return redirect()->route('schedules.index')->with('success', 'スケジュールが削除されました。');
+        return redirect()->route('schedules')->with('success', 'スケジュールが削除されました。');
     }
 }
 
