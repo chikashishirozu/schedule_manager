@@ -21,7 +21,7 @@
                         <h5>{{ __('Quick Links') }}</h5>
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="{{ route('schedule') }}">{{ __('View Schedule') }}</a>
+                                <a href="{{ route('schedules') }}">{{ __('View Schedule') }}</a>
                             </li>
                         </ul>
                     </div>
