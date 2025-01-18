@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('schedules', ScheduleController::class);
 });
 
-Route::get('/schedule', [ScheduleController::class, 'index'])->name('schedule');
+Route::get('/schedules', [ScheduleController::class, 'index'])->name('schedules');
 
 // プロフィール用ルート
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
