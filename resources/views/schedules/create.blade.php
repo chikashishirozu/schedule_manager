@@ -42,7 +42,7 @@
                         </div>
                     @endif
                     <div class="mt-3">
-                        <a href="{{ route('schedules.index') }}" class="btn btn-secondary">{{ __('戻る') }}</a>
+                        <a href="{{ route('schedules') }}" class="btn btn-secondary">{{ __('戻る') }}</a>
                         <a href="{{ route('dashboard') }}" class="btn btn-outline-primary">{{ __('ダッシュボードへ戻る') }}</a>
                     </div>
                 </div>

@@ -56,7 +56,7 @@
                     </form>
 
                     <div class="mt-3">
-                        <a href="{{ route('schedules.index') }}" class="btn btn-secondary me-2">戻る</a>
+                        <a href="{{ route('schedules') }}" class="btn btn-secondary me-2">戻る</a>
                         <a href="{{ route('dashboard') }}" class="btn btn-link">ダッシュボードへ戻る</a>
                     </div>
                 </div>

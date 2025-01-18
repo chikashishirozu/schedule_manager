@@ -20,9 +20,9 @@
                     
                     <ul class="list-group">
                         @forelse ($schedules as $schedule)
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                {{ $schedule->title }} - {{ $schedule->start_time }} から {{ $schedule->end_time }}
-                                <a href="{{ route('schedules.edit', $schedule->id) }}" class="btn btn-sm btn-warning">{{ __('編集') }}</a>
+                            <li class="list-group-item">
+                                <strong>{{ $schedule->title }}</strong><br> - {{ $schedule->start_time }} から {{ $schedule->end_time }}<br>詳細: {{ $schedule->description }}<br>                            
+                                <a href="{{ route('schedules.edit', $schedule->id) }}" class="btn btn-sm btn-warning" style="float: right;">{{ __('編集') }}</a>
                             </li>
                         @empty
                             <li class="list-group-item">{{ __('スケジュールがありません。') }}</li>
@@ -34,7 +34,7 @@
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <a href="{{ route('dashboard') }}">{{ __('ダッシュボードへ戻る') }}</a>
-                            </li>
+                            </li>                       
                         </ul>
                     </div>
                 </div>
