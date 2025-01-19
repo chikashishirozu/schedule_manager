@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="card-body" style="background-color: #e6e6fa;">
-                    <form method="POST" style="background-color: #f0f8ff;" action="{{ route('profile.update') }}">
+                    <form method="POST" style="background-color: #e6e6fa;" action="{{ route('profile.update') }}">
                         @csrf
                         @method('PUT')
 
