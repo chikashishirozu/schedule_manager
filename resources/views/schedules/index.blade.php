@@ -36,7 +36,7 @@
                         <h5>{{ __('Quick Links') }}</h5>
                         <ul class="list-group" style="background-color: #f0f8ff;">
                             <li class="list-group-item" style="background-color: #f0f8ff;">>
-                                <a href="{{ route('dashboard') }}">{{ __('ダッシュボードへ戻る') }}</a>
+                                <a href="{{ route('dashboard') }}" class="btn btn-outline-primary">{{ __('ダッシュボードへ戻る') }}</a>
                             </li>                       
                         </ul>
                     </div>

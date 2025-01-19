@@ -60,7 +60,7 @@
 
                     <div class="mt-3" style="background-color: #e6e6fa;">
                         <a href="{{ route('schedules') }}" class="btn btn-secondary me-2">戻る</a>
-                        <a href="{{ route('dashboard') }}" class="btn btn-link">ダッシュボードへ戻る</a>
+                        <a href="{{ route('dashboard') }}" class="btn btn-outline-primary">{{ __('ダッシュボードへ戻る') }}</a>
                     </div>
                 </div>
             </div>
