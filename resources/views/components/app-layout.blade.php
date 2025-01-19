@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="min-h-screen bg-gray-100">
-        <header style="background-color: #66cdaa;">
+        <header style="background-color: #66cdaa !important;">
             <nav>
                 <!-- ナビゲーションバーのコンテンツ -->
             </nav>
