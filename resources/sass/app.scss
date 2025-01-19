@@ -6,3 +6,18 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+body {
+    background-color: #dcdcdc; // body の背景色を設定
+    // color: #333; // テキストの色（必要に応じて設定）
+    margin: 0;
+    font-family: Arial, sans-serif; // フォントファミリーの指定
+}
+
+header {
+    background-color: #66cdaa !important; // header の背景色を設定
+    // color: white; // ヘッダー内のテキストの色
+    // padding: 1rem; // パディングで内側の余白を設定
+    // text-align: center; // テキストを中央揃え
+}
+
