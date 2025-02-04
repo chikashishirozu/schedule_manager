@@ -63,6 +63,7 @@
                                 onclick="return confirm('本当に削除しますか？')">{{ __('削除') }}</button>
                         </form>
                     </div>
+                
                     <div class="card-body" style="background-color: #e6e6fa;">
                         <a href="{{ route('schedules.index') }}" class="btn btn-secondary me-2">{{ __('戻る') }}</a>
                         <a href="{{ route('dashboard') }}" class="btn btn-outline-primary">{{ __('ダッシュボードへ戻る') }}</a>
