@@ -14,7 +14,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('faviconsekai.png') }}" type="image/png">
+    <!-- link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" -->
     
     <!-- stylesheet -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
