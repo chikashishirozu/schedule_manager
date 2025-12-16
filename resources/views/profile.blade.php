@@ -12,11 +12,12 @@
                 </div>
 
                 <div class="card-body" style="background-color: #e6e6fa;">
+                @auth
                     <div class="mb-3" style="background-color: #f0f8ff;">
-                        <h5>{{ __('Name:') }} <span class="fw-bold">{{ Auth::user()->name }}</span></h5>
+                        <h5>{{ __('Name:') }} <span class="fw-bold">{{ Auth::user()->name ?? 'N/A'}}</span></h5>
                     </div>
                     <div class="mb-3" style="background-color: #f0f8ff;">
-                        <h5>{{ __('Email:') }} <span class="fw-bold">{{ Auth::user()->email }}</span></h5>
+                        <h5>{{ __('Email:') }} <span class="fw-bold">{{ Auth::user()->email ?? 'N/A'}}</span></h5>
                     </div>
 
                     <hr>
@@ -25,6 +26,12 @@
                         <a href="{{ route('settings') }}" class="btn btn-primary">{{ __('Edit Profile') }}</a>
                         <a href="{{ route('logout') }}" class="btn btn-danger">{{ __('Logout') }}</a>
                     </div>
+                @else
+                    <div class="alert alert-warning">
+                        {{ __('セッションが切れています。再度ログインしてください。') }}
+                    </div>
+                    <a href="{{ route('login') }}" class="btn btn-primary">{{ __('ログイン') }}</a>
+                @endauth                    
                 </div>
             </div>
         </div>
