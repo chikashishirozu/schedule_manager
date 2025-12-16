@@ -21,6 +21,8 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard'); // ダッシュボードのビューを返す
     })->name('dashboard');
     
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    
     Route::resource('schedules', ScheduleController::class);
 });
 
