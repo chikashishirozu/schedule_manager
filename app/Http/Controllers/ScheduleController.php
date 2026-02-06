@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Schedule; // スケジュールのモデルをインポート
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
 
 class ScheduleController extends Controller
 {
@@ -40,32 +41,38 @@ class ScheduleController extends Controller
      * Store a newly created resource in storage.
      * 新規作成処理
      */
+
     public function store(Request $request)
     {
-        // バリデーションルールの定義
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'start_time' => 'required|date',
-            'end_time' => 'required|date|after:start_time',
+            'start_time' => 'required|date_format:Y-m-d\TH:i',
+            'end_time' => 'required|date_format:Y-m-d\TH:i',
         ]);
 
-        // バリデーションエラー時のリダイレクト
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        // 新しいスケジュールの作成
+        $start = Carbon::createFromFormat('Y-m-d\TH:i', $request->start_time);
+        $end   = Carbon::createFromFormat('Y-m-d\TH:i', $request->end_time);
+
+        if ($end->lte($start)) {
+            return redirect()->back()
+                ->withErrors(['end_time' => '終了時間は開始時間より後にしてください'])
+                ->withInput();
+        }
+
         $schedule = new Schedule();
-        $schedule->title = $request->input('title');
-        $schedule->description = $request->input('description');
-        $schedule->start_time = $request->input('start_time');
-        $schedule->end_time = $request->input('end_time');
+        $schedule->title = $request->title;
+        $schedule->description = $request->description;
+        $schedule->start_time = $start;
+        $schedule->end_time = $end;
         $schedule->save();
 
-        // スケジュール一覧ページへリダイレクト
         return redirect()->route('schedules')->with('status', 'スケジュールが追加されました。');
     }
 
@@ -95,29 +102,36 @@ class ScheduleController extends Controller
      * Update the specified resource in storage.
      * 更新処理
      */
+
     public function update(Request $request, string $id)
     {
-        // バリデーションルールの定義
         $validator = Validator::make($request->all(), [
-        'title' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'start_time' => 'required|date',
-        'end_time' => 'required|date|after:start_time',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'start_time' => 'required|date_format:Y-m-d\TH:i',
+            'end_time' => 'required|date_format:Y-m-d\TH:i',
         ]);
 
-        // バリデーションエラー時のリダイレクト
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        // 指定されたスケジュールの更新
+        $start = Carbon::createFromFormat('Y-m-d\TH:i', $request->start_time);
+        $end   = Carbon::createFromFormat('Y-m-d\TH:i', $request->end_time);
+
+        if ($end->lte($start)) {
+            return redirect()->back()
+                ->withErrors(['end_time' => '終了時間は開始時間より後にしてください'])
+                ->withInput();
+        }
+
         $schedule = Schedule::findOrFail($id);
-        $schedule->title = $request->input('title');
-        $schedule->description = $request->input('description');
-        $schedule->start_time = $request->start_time;
-        $schedule->end_time = $request->end_time;
+        $schedule->title = $request->title;
+        $schedule->description = $request->description;
+        $schedule->start_time = $start;
+        $schedule->end_time = $end;
         $schedule->save();
 
         return redirect()->route('schedules')->with('success', 'スケジュールが更新されました。');
