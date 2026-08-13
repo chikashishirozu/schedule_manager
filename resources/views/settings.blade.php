@@ -1,29 +1,29 @@
 @extends('layouts.app')
 
 @section('content')
-<body style="background-color: #dcdcdc;">
+<div class="app-page-bg py-4">
 <div class="container">
-    <div class="row justify-content-center" style="background-color: #e6e6fa;">
+    <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="background-color: #e6e6fa;">
-                <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="card">
+                <div class="card-header app-card-header-bg d-flex justify-content-between align-items-center">
                     <span>{{ __('Settings') }}</span>
                     <a href="{{ route('dashboard') }}" class="btn btn-secondary">{{ __('Dashboard') }}</a>
                 </div>
 
-                <div class="card-body" style="background-color: #e6e6fa;">
-                    <form method="POST" style="background-color: #e6e6fa;" action="{{ route('profile.update') }}">
+                <div class="card-body app-card-bg">
+                    <form method="POST" action="{{ route('profile.update') }}">
                         @csrf
                         @method('PUT')
 
                         <div class="mb-3">
                             <label for="name" class="form-label">{{ __('Name') }}</label>
-                            <input type="text" class="form-control" id="name" style="background-color: #f0f8ff;" name="name" value="{{ Auth::user()->name }}" required>
+                            <input type="text" class="form-control app-input-bg" id="name" name="name" value="{{ Auth::user()->name }}" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label">{{ __('Email Address') }}</label>
-                            <input type="email" class="form-control" id="email" style="background-color: #f0f8ff;" name="email" value="{{ Auth::user()->email }}" required>
+                            <input type="email" class="form-control app-input-bg" id="email" name="email" value="{{ Auth::user()->email }}" required>
                         </div>
 
                         <div class="d-flex justify-content-between">
@@ -36,6 +36,5 @@
         </div>
     </div>
 </div>
-</body>
+</div>
 @endsection
-
