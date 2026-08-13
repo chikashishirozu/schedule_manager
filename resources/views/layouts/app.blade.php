@@ -12,25 +12,30 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    
-    <!-- Favicon -->
+
+    <!-- favicon -->
     <link rel="shortcut icon" href="{{ asset('faviconsekai.png') }}" type="image/png">
-    <!-- link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon" -->
-    
+
     <!-- stylesheet -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <style>
-        body {
-            background-color: #b0c4de;
-        }
-    </style>
-    
+
+    <!-- 表示モードのちらつき防止：描画前に保存済みテーマを適用 -->
+    <script>
+        (function () {
+            var theme = localStorage.getItem('app-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <!-- テーマCSSは必ず最後に読み込む（Vite側のBootstrapに上書きされないようにするため） -->
+    <link rel="stylesheet" href="{{ asset('css/theme-toggle.css') }}">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="background-color: #afeeee !important;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm app-nav-bg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel schedule_manager') }}
@@ -44,7 +49,12 @@
                     <ul class="navbar-nav me-auto"></ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-md-center">
+                        <li class="nav-item me-2">
+                            <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" onclick="cycleAppTheme()">
+                                ☀ ライト
+                            </button>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
@@ -88,6 +98,7 @@
             @yield('content')
         </main>
     </div>
+
+    <script src="{{ asset('js/theme-toggle.js') }}"></script>
 </body>
 </html>
-
