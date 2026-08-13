@@ -1,0 +1,99 @@
+/* ==========================================================
+   スケジュール管理アプリ 表示モード切替 (light / dim / dark)
+   dim = 眩しすぎない中間モード
+   ========================================================== */
+
+:root,
+[data-theme="light"] {
+  --app-body-bg: #b0c4de;
+  --app-page-bg: #dcdcdc;
+  --app-header-bg: #66cdaa;
+  --app-nav-bg: #afeeee;
+  --app-card-bg: #e6e6fa;
+  --app-card-header-bg: #e6e6fa;
+  --app-input-bg: #f0f8ff;
+  --app-list-bg: #f0f8ff;
+  --app-text-color: #212529;
+  --app-toggle-bg: rgba(0, 0, 0, .08);
+}
+
+[data-theme="dim"] {
+  --app-body-bg: #5c6b78;
+  --app-page-bg: #4a5058;
+  --app-header-bg: #3e8974;
+  --app-nav-bg: #4f8484;
+  --app-card-bg: #565668;
+  --app-card-header-bg: #565668;
+  --app-input-bg: #4a5866;
+  --app-list-bg: #4a5866;
+  --app-text-color: #e8e8ec;
+  --app-toggle-bg: rgba(255, 255, 255, .12);
+}
+
+[data-theme="dark"] {
+  --app-body-bg: #1b232c;
+  --app-page-bg: #212529;
+  --app-header-bg: #2f6657;
+  --app-nav-bg: #244a4a;
+  --app-card-bg: #2f2f3a;
+  --app-card-header-bg: #2f2f3a;
+  --app-input-bg: #262f38;
+  --app-list-bg: #262f38;
+  --app-text-color: #dee2e6;
+  --app-toggle-bg: rgba(255, 255, 255, .15);
+}
+
+html, body {
+  background-color: var(--app-page-bg) !important;
+  color: var(--app-text-color);
+  min-height: 100%;
+  transition: background-color .2s ease, color .2s ease;
+}
+
+.app-page-bg { background-color: var(--app-page-bg) !important; }
+.app-nav-bg { background-color: var(--app-nav-bg) !important; }
+.app-card-bg { background-color: var(--app-card-bg) !important; color: var(--app-text-color); }
+.app-card-header-bg { background-color: var(--app-card-header-bg) !important; color: var(--app-text-color); }
+.app-input-bg { background-color: var(--app-input-bg) !important; color: var(--app-text-color) !important; }
+.app-list-bg { background-color: var(--app-list-bg) !important; color: var(--app-text-color); }
+
+/* Bootstrapの各コンポーネントに直接テーマを適用（付け忘れ防止・色ムラ対策） */
+.navbar { background-color: var(--app-nav-bg) !important; }
+.card {
+  background-color: var(--app-card-bg) !important;
+  border-color: var(--app-input-bg) !important;
+  color: var(--app-text-color);
+}
+.card-header {
+  background-color: var(--app-card-header-bg) !important;
+  border-color: var(--app-input-bg) !important;
+  color: var(--app-text-color);
+}
+.card-body { color: var(--app-text-color); }
+.list-group-item {
+  background-color: var(--app-list-bg) !important;
+  border-color: var(--app-input-bg) !important;
+  color: var(--app-text-color);
+}
+.form-control,
+textarea.form-control {
+  background-color: var(--app-input-bg) !important;
+  border-color: var(--app-input-bg) !important;
+  color: var(--app-text-color) !important;
+}
+.form-control::placeholder { color: var(--app-text-color); opacity: .6; }
+.form-label, .col-form-label, .form-check-label { color: var(--app-text-color); }
+
+.theme-toggle-btn {
+  border: none;
+  background: var(--app-toggle-bg);
+  color: var(--app-text-color);
+  border-radius: 999px;
+  padding: .35rem .9rem;
+  font-size: .85rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.theme-toggle-btn:hover {
+  filter: brightness(1.1);
+}
