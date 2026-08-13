@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<body style="background-color: #dcdcdc;">
-<div class="container" style="background-color: #dcdcdc;">
+<div class="app-page-bg py-4">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="background-color: #e6e6fa;">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+            <div class="card">
+                <div class="card-header app-card-header-bg">{{ __('Verify Your Email Address') }}</div>
 
-                <div class="card-body" style="background-color: #e6e6fa;">
+                <div class="card-body app-card-bg">
                     @if (session('resent'))
                         <div class="alert alert-success" role="alert">
                             {{ __('A fresh verification link has been sent to your email address.') }}
@@ -26,5 +26,5 @@
         </div>
     </div>
 </div>
-</body>
+</div>
 @endsection
