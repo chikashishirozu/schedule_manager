@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<body style="background-color: #dcdcdc;">
+<div class="app-page-bg py-4">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="background-color: #e6e6fa;">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
+            <div class="card">
+                <div class="card-header app-card-header-bg">{{ __('Confirm Password') }}</div>
 
-                <div class="card-body" style="background-color: #e6e6fa;">
+                <div class="card-body app-card-bg">
                     {{ __('Please confirm your password before continuing.') }}
 
                     <form method="POST" action="{{ route('password.confirm') }}">
@@ -18,7 +18,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" style="background-color: #f0f8ff;" name="password" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control app-input-bg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0" style="background-color: #e6e6fa;">
+                        <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Confirm Password') }}
@@ -47,5 +47,5 @@
         </div>
     </div>
 </div>
-</body>
+</div>
 @endsection
